@@ -1,0 +1,14 @@
+FROM rasa/rasa:3.6.2-full
+
+WORKDIR /app
+COPY . .
+
+# El puerto que espera Hugging Face suele ser el 7860, 
+# pero configuraremos Rasa para que sea flexible
+EXPOSE 5005
+
+# Entrenar el modelo durante la construcción (opcional si ya subes el .tar.gz)
+# Se recomienda subir el modelo ya entrenado en la carpeta /models
+# RUN rasa train
+
+CMD ["run", "--enable-api", "--cors", "*", "--port", "5005"]

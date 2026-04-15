@@ -1,0 +1,19 @@
+FROM rasa/rasa-sdk:3.6.2
+
+WORKDIR /app
+
+USER root
+
+# Instalamos dependencias
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY actions.py .
+# No copiamos config_tuneles_auto.json porque usaremos variables de entorno
+
+# Exponemos el puerto de rasa actions
+EXPOSE 5055
+
+USER 1001
+
+CMD ["start", "--actions", "actions"]
