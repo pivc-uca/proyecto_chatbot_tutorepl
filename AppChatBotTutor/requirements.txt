@@ -1,6 +1,7 @@
 Flask  
 Flask-SQLAlchemy 
-Flask-WTF Werkzeug 
+Flask-WTF 
+Werkzeug 
 Flask-Login 
 email_validator 
 requests 
