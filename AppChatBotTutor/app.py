@@ -167,7 +167,7 @@ def guardar_historial():
         return jsonify({"message": f"Error al guardar el historial: {str(e)}"}), 500
  
 @app.route('/enviar-mensaje-rasa', methods=['POST'])
-@requerir_url
+# @requerir_url
 def enviar_mensaje_rasa():
     data = request.json
     sender_id = data.get("sender_id")
@@ -195,7 +195,7 @@ def enviar_mensaje_rasa():
         return jsonify({"error": str(e)}), 500    
         
 @app.route('/chatbot/message', methods=['POST'])
-@requerir_url
+# @requerir_url
 def chatbot_message():
     user_message = request.json.get("message")
     # rasa_url = "http://localhost:5005/webhooks/rest/webhook"
@@ -222,7 +222,7 @@ def ver_caso(case_id):
                            user=current_user)
 
 @app.route('/validar_extension')
-@requerir_url
+# @requerir_url
 @login_required
 def validar_extension():
     case_id = request.args.get('case_id') # Obtiene el case_id de los parámetros de la URL
@@ -237,7 +237,7 @@ def validar_extension():
                                extension_id="dlfnmjnmhljcjpcfnlobkghefcoojibc") # Tu ID                        
 
 @app.route('/practica_epl')
-@requerir_url
+# @requerir_url
 @login_required
 def practica_epl():
     case_id = request.args.get('case_id') # Obtiene el case_id de los parámetros de la URL
