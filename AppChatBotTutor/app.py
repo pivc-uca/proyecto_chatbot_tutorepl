@@ -310,6 +310,14 @@ def ver_historial():
               
 
 if __name__ == '__main__':
+    # Render asigna un puerto automáticamente a través de la variable de entorno PORT
+    port = int(os.environ.get("PORT", 5000))
+    
+    # IMPORTANTE: host='0.0.0.0' permite conexiones externas
+    app.run(host='0.0.0.0', port=port)
+
     with app.app_context():
         create_tables(app) # Asegura que las tablas se creen al iniciar la app
     app.run(debug=True) # debug=True recarga el servidor automáticamente con los cambios y muestra errores
+
+    
